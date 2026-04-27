@@ -26,7 +26,7 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
             Arquitectura y Sistemas Operativos
           </p>
           <h1 className="font-serif text-5xl text-[#1A1612] leading-tight">
-            Autoevaluación
+            Quiz de repaso
           </h1>
           <div className="mt-4 h-px bg-[#1A1612]" />
         </div>
@@ -61,8 +61,8 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
             </label>
             <div className="flex gap-2">
               {[
-                { value: 1, label: "Auto. 1" },
-                { value: 2, label: "Auto. 2" },
+                { value: 1, label: "Autoevaluacion 1 (Unidades 1, 2 y 3)" },
+                { value: 2, label: "Autoevaluacion 2 (Unidades 4 y 5)" },
                 { value: 3, label: "Ambas" },
               ].map((opt) => (
                 <button

@@ -1158,5 +1158,295 @@
       }
     ],
     "respuesta_correcta": "c"
+  },
+  {
+    "id": 41,
+    "autoevaluacion": 2,
+    "unidad": 4,
+    "pregunta": "En un sistema con recursos consumibles, ¿cuándo puede producirse un interbloqueo por mensajes?",
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "Cuando el proceso A espera un mensaje de B con receive bloqueante y B a su vez espera un mensaje de A, bloqueándose mutuamente.",
+        "explicacion": "Correcto. Los recursos consumibles (como señales o mensajes) pueden generar interbloqueo si se produce una secuencia de ejecución en la que dos o más procesos quedan bloqueados esperando un evento o mensaje que solo puede ser generado por otro proceso que también está bloqueado [1], [2]."
+      },
+      {
+        "id": "b",
+        "texto": "Cuando el sistema operativo no tiene suficiente memoria para almacenar los mensajes en tránsito.",
+        "explicacion": "Incorrecto. La escasez de memoria RAM es un problema relacionado con recursos reutilizables o gestión de almacenamiento, mientras que el interbloqueo por mensajes es una situación lógica de espera mutua irresoluble [3], [2]."
+      },
+      {
+        "id": "c",
+        "texto": "Cuando un proceso envía un mensaje a sí mismo y queda esperando su propia respuesta.",
+        "explicacion": "Incorrecto. El interbloqueo se define como el bloqueo permanente de un conjunto de procesos (dos o más) que dependen entre sí; un error en la lógica interna de un solo proceso que lo detiene no se categoriza como interbloqueo del sistema [4], [2]."
+      },
+      {
+        "id": "d",
+        "texto": "Cuando dos procesos envían mensajes al mismo buzón de mensajes simultáneamente.",
+        "explicacion": "Incorrecto. El acceso simultáneo a un buzón (direccionamiento indirecto) es una operación normal de comunicación que el sistema operativo gestiona mediante colas, y no provoca interbloqueo a menos que se cumplan las condiciones de espera circular [5], [2]."
+      }
+    ],
+    "respuesta_correcta": "a"
+  },
+  {
+    "id": 42,
+    "autoevaluacion": 2,
+    "unidad": 4,
+    "pregunta": "¿Por qué es difícil detectar interbloqueos causados por recursos consumibles como mensajes?",
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "Porque la aparición del interbloqueo depende de la secuencia de ejecución de las instrucciones, que es difícil de predecir y reproducir.",
+        "explicacion": "Correcto. Los interbloqueos que involucran recursos consumibles son particularmente complejos porque su aparición está ligada a la dinámica de ejecución y a secuencias específicas de peticiones que pueden no repetirse en todas las corridas del programa [1, 2]."
+      },
+      {
+        "id": "b",
+        "texto": "Porque los recursos consumibles no pueden ser monitoreados por el algoritmo de detección estándar.",
+        "explicacion": "Incorrecto. El sistema operativo puede emplear algoritmos de detección periódicos basados en matrices de asignación y solicitud para identificar esperas circulares, incluso en recursos consumibles; el problema no es la falta de monitoreo, sino la naturaleza no determinista del fallo [3, 4]."
+      },
+      {
+        "id": "c",
+        "texto": "Porque el sistema operativo no tiene acceso al contenido de los mensajes intercambiados.",
+        "explicacion": "Incorrecto. El núcleo es el encargado de gestionar las primitivas de comunicación (send y receive) y los buzones, por lo que tiene el control técnico sobre el flujo de los mensajes entre procesos [5, 6]."
+      },
+      {
+        "id": "d",
+        "texto": "Porque los mensajes no dejan rastro en el sistema una vez que son consumidos por el proceso.",
+        "explicacion": "Incorrecto. El interbloqueo ocurre cuando los procesos quedan bloqueados esperando un mensaje que nunca llega. Una vez que un mensaje es consumido, el recurso deja de existir, pero el problema del interbloqueo reside en la espera previa e irresoluble [7, 8]."
+      }
+    ],
+    "respuesta_correcta": "a"
+  },
+  {
+    "id": 43,
+    "autoevaluacion": 2,
+    "unidad": 4,
+    "pregunta": "¿Qué condición convierte a las tres condiciones necesarias en condición necesaria Y suficiente para el interbloqueo?",
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "La planificación por prioridades que hace que ciertos procesos nunca obtengan los recursos.",
+        "explicacion": "Incorrecto. La planificación por prioridades puede derivar en problemas de inanición (starvation), donde un proceso es postergado indefinidamente, pero no constituye una de las condiciones lógicas que definen el estado de interbloqueo [1, 2]."
+      },
+      {
+        "id": "b",
+        "texto": "La espera circular, donde cada proceso de una lista cerrada posee un recurso requerido por el siguiente proceso de la lista.",
+        "explicacion": "Correcto. Según las fuentes, las tres primeras condiciones (exclusión mutua, retención y espera, y sin expropiación) son necesarias pero no suficientes; es la presencia de una espera circular la que completa el conjunto de condiciones necesarias y suficientes para que exista un interbloqueo [3-5]."
+      },
+      {
+        "id": "c",
+        "texto": "La existencia de recursos consumibles en el sistema que pueden agotarse permanentemente.",
+        "explicacion": "Incorrecto. Aunque los recursos consumibles pueden estar involucrados en situaciones de interbloqueo, su existencia no es la condición teórica que convierte a las demás en suficientes; esa función la cumple específicamente la espera circular [3, 6]."
+      },
+      {
+        "id": "d",
+        "texto": "El uso de semáforos binarios que impiden el acceso simultáneo a múltiples secciones críticas.",
+        "explicacion": "Incorrecto. Los semáforos binarios son herramientas de software para implementar la exclusión mutua y la sincronización; aunque una mala implementación puede causar bloqueos, no son una de las cuatro condiciones fundamentales del interbloqueo [5, 7]."
+      }
+    ],
+    "respuesta_correcta": "b"
+  },
+  {
+    "id": 44,
+    "autoevaluacion": 2,
+    "unidad": 4,
+    "pregunta": "¿Qué condición del interbloqueo se elimina cuando el sistema operativo puede quitar recursos a un proceso en ejecución?",
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "La condición de \"sin expropiación\", ya que el SO puede forzar la liberación de recursos asignados.",
+        "explicacion": "Correcto. Por definición, la condición de 'sin expropiación' establece que el sistema operativo no puede retirar un recurso a un proceso que ya lo tiene asignado [1]. Si el sistema implementa mecanismos para expropiar recursos de un proceso (por ejemplo, si está bloqueado) para asignarlos a otro, esta condición necesaria para el interbloqueo queda eliminada [2, 3]."
+      },
+      {
+        "id": "b",
+        "texto": "La condición de exclusión mutua, ya que los recursos pasan a ser compartidos por varios procesos.",
+        "explicacion": "Incorrecto. La exclusión mutua significa que solo un proceso puede acceder a un recurso a la vez [4]. Quitar un recurso para dárselo a otro proceso sigue manteniendo la exclusión mutua (solo uno lo usa), pero cambia quién lo posee por la fuerza [3]."
+      },
+      {
+        "id": "c",
+        "texto": "La condición de espera circular, ya que se rompe la cadena de procesos esperando recursos.",
+        "explicacion": "Incorrecto. Aunque la expropiación puede ayudar a romper una espera circular ya existente, la condición que se ataca directamente al permitir que el SO retire recursos es la de 'sin expropiación' [3, 5]."
+      },
+      {
+        "id": "d",
+        "texto": "La condición de retención y espera, ya que el proceso debe liberar todo antes de pedir más.",
+        "explicacion": "Incorrecto. La retención y espera se elimina obligando a los procesos a solicitar todos sus recursos al inicio o a no retener ninguno antes de pedir nuevos [6, 7]. La expropiación es un método distinto que actúa sobre el control del SO sobre el recurso, no sobre la política de solicitud del proceso [3]."
+      }
+    ],
+    "respuesta_correcta": "a"
+  },
+  {
+    "id": 45,
+    "autoevaluacion": 2,
+    "unidad": 4,
+    "pregunta": "¿Cómo previene el interbloqueo la estrategia directa basada en jerarquía de recursos?",
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "Definiendo un orden de tipos de recursos de modo que si un proceso tiene tipo A, solo pueda pedir tipo B en adelante, evitando la espera circular.",
+        "explicacion": "Correcto. Según las fuentes, la espera circular se puede impedir definiendo un orden lineal o jerárquico entre los recursos. Si un proceso ya posee un recurso de cierto nivel, solo se le permite solicitar recursos de niveles superiores, lo que imposibilita la formación de un ciclo o lista cerrada de procesos en espera [1, 2]."
+      },
+      {
+        "id": "b",
+        "texto": "Asignando automáticamente todos los recursos al proceso con mayor prioridad en el sistema.",
+        "explicacion": "Incorrecto. La prioridad puede influir en la planificación o en evitar la inanición (starvation), pero no es un mecanismo diseñado para romper la estructura lógica de la espera circular requerida para un interbloqueo [1, 2]."
+      },
+      {
+        "id": "c",
+        "texto": "Forzando a los procesos a liberar todos sus recursos cada vez que soliciten uno adicional.",
+        "explicacion": "Incorrecto. Esta acción se relaciona más con la eliminación de la condición de 'retención y espera' o la aplicación de 'expropiación', pero no describe el funcionamiento de la estrategia basada en una jerarquía u orden de recursos [2-4]."
+      },
+      {
+        "id": "d",
+        "texto": "Permitiendo que los procesos soliciten recursos en cualquier orden pero limitando la cantidad total.",
+        "explicacion": "Incorrecto. El interbloqueo puede ocurrir incluso con pocos recursos si se permite que las peticiones se realicen en cualquier orden, favoreciendo la aparición de esperas circulares. La estrategia jerárquica impone precisamente un orden específico para evitar este riesgo [1, 2]."
+      }
+    ],
+    "respuesta_correcta": "a"
+  },
+  {
+    "id": 46,
+    "autoevaluacion": 2,
+    "unidad": 4,
+    "pregunta": "¿Qué información requiere la estrategia de predicción del interbloqueo para funcionar correctamente?",
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "Únicamente el historial de ejecuciones anteriores de cada proceso en el sistema.",
+        "explicacion": "Incorrecto. Las estrategias para evitar o predecir el interbloqueo se basan en la planificación de eventos venideros; el historial pasado no es suficiente para determinar si una asignación actual conducirá a un estado no seguro en el futuro [1]."
+      },
+      {
+        "id": "b",
+        "texto": "La cantidad total de procesos activos y el número de recursos físicos del sistema.",
+        "explicacion": "Incorrecto. Aunque el sistema conoce los recursos totales (vector R), la predicción requiere específicamente saber cómo planean los procesos utilizar esos recursos a lo largo de su ejecución para evitar conflictos [2, 3]."
+      },
+      {
+        "id": "c",
+        "texto": "El conocimiento anticipado de las futuras solicitudes de recursos de cada proceso.",
+        "explicacion": "Correcto. Por definición, las estrategias de predicción y evitación (como el algoritmo del banquero) deciden dinámicamente si una petición es segura basándose en el conocimiento de todas las solicitudes que el proceso realizará hasta finalizar [1, 4]."
+      },
+      {
+        "id": "d",
+        "texto": "Solo el estado actual de los recursos disponibles en el sistema en cada momento.",
+        "explicacion": "Incorrecto. Conocer solo el estado actual es propio de los algoritmos de detección, los cuales son más permisivos. La predicción es más restrictiva y requiere proyecciones a futuro para garantizar que siempre exista una secuencia de finalización segura [5-7]."
+      }
+    ],
+    "respuesta_correcta": "c"
+  },
+  {
+    "id": 47,
+    "autoevaluacion": 2,
+    "unidad": 4,
+    "pregunta": "¿Cuándo conviene realizar la comprobación de interbloqueo con mayor frecuencia según el algoritmo de detección?",
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "Solo cuando el sistema detecta que la memoria disponible cae por debajo de un umbral crítico.",
+        "explicacion": "Incorrecto. El algoritmo de detección se enfoca en identificar esperas circulares lógicas entre procesos. Basar la frecuencia únicamente en el nivel de memoria RAM no garantiza la detección oportuna de interbloqueos causados por otros tipos de recursos o conflictos de comunicación [1, 2]."
+      },
+      {
+        "id": "b",
+        "texto": "Cada vez que un proceso realiza una petición de recurso, permitiendo una detección temprana aunque con mayor costo de procesador.",
+        "explicacion": "Correcto. Según las fuentes, realizar la comprobación en cada solicitud conlleva a una detección temprana del interbloqueo, permitiendo una recuperación más rápida, aunque tiene la desventaja de consumir un tiempo de procesador considerable [1, 2]."
+      },
+      {
+        "id": "c",
+        "texto": "Únicamente al inicio y al final de cada sesión de trabajo del sistema operativo.",
+        "explicacion": "Incorrecto. Los interbloqueos son fenómenos dinámicos que ocurren durante la ejecución de los procesos. Una frecuencia tan baja impediría que el sistema operativo gestionara y recuperara recursos bloqueados de forma efectiva mientras los procesos están activos [1, 2]."
+      },
+      {
+        "id": "d",
+        "texto": "Solo cuando el administrador del sistema lo solicita manualmente mediante una llamada al sistema.",
+        "explicacion": "Incorrecto. El mecanismo de detección debe ser una función integrada y automática del sistema operativo para garantizar la estabilidad operativa. Depender de una intervención manual sería ineficiente para un sistema de tiempo real o multiprogramado [1, 2]."
+      }
+    ],
+    "respuesta_correcta": "b"
+  },
+  {
+    "id": 48,
+    "autoevaluacion": 2,
+    "unidad": 4,
+    "pregunta": "¿Qué hace el algoritmo de detección cuando encuentra un proceso cuyas solicitudes son menores o iguales al vector de recursos disponibles?",
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "Aborta el proceso inmediatamente para liberar los recursos que tiene asignados al sistema.",
+        "explicacion": "Incorrecto. Abortar o finalizar procesos es una de las estrategias de recuperación que se aplican una vez que el interbloqueo ya ha sido detectado, pero no es la lógica interna del algoritmo de detección propiamente dicho [1, 2]."
+      },
+      {
+        "id": "b",
+        "texto": "Bloquea el proceso y lo coloca en la cola de espera hasta que haya más recursos disponibles.",
+        "explicacion": "Incorrecto. Si las solicitudes son menores o iguales a los recursos disponibles, el algoritmo asume que el proceso puede ejecutarse hasta finalizar; el bloqueo ocurre precisamente cuando las solicitudes no pueden ser satisfechas [3]."
+      },
+      {
+        "id": "c",
+        "texto": "Reinicia el proceso desde el principio y vuelve a asignarle los recursos que necesitaba.",
+        "explicacion": "Incorrecto. El retroceso (rollback) a un punto de control previo es una técnica de recuperación ante un interbloqueo detectado, no una acción del proceso de búsqueda de esperas circulares [1]."
+      },
+      {
+        "id": "d",
+        "texto": "Lo marca como completable, suma sus recursos asignados al vector disponible y continúa buscando otros procesos.",
+        "explicacion": "Correcto. El algoritmo busca procesos cuyas peticiones puedan satisfacerse con los recursos actuales (vector D). Al encontrar uno, se asume que termina su ejecución y libera sus recursos asignados, sumándolos al vector de trabajo (T) para ver si otros procesos pueden entonces desbloquearse [3-5]."
+      }
+    ],
+    "respuesta_correcta": "d"
+  },
+  {
+    "id": 49,
+    "autoevaluacion": 2,
+    "unidad": 4,
+    "pregunta": "¿Qué conclusión obtiene el algoritmo de detección sobre los procesos que no pudieron ser marcados al finalizar su ejecución?",
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "Que esos procesos están en estado suspendido y deben ser reanudados por el planificador.",
+        "explicacion": "Incorrecto. El estado suspendido se refiere a procesos que han sido movidos a almacenamiento secundario (swapping) para liberar memoria principal, mientras que el algoritmo de detección se centra en identificar bloqueos lógicos por recursos entre procesos activos [1, 2]."
+      },
+      {
+        "id": "b",
+        "texto": "Que esos procesos requieren más recursos de los disponibles pero podrán ejecutarse más tarde.",
+        "explicacion": "Incorrecto. El algoritmo asume que, si un proceso no puede ser marcado, es porque no existe ninguna secuencia de finalización posible con los recursos actuales y los que liberarían otros procesos; por lo tanto, no es una espera temporal sino un bloqueo permanente [2, 3]."
+      },
+      {
+        "id": "c",
+        "texto": "Que esos procesos se encuentran en situación de interbloqueo y no pueden completar su ejecución.",
+        "explicacion": "Correcto. Según las fuentes, la lógica del algoritmo consiste en marcar procesos cuyas peticiones puedan satisfacerse; si al finalizar el procedimiento quedan procesos sin marcar, se concluye que dichos procesos se encuentran en interbloqueo [2, 4]."
+      },
+      {
+        "id": "d",
+        "texto": "Que esos procesos tienen errores de programación y deben ser eliminados del sistema.",
+        "explicacion": "Incorrecto. Si bien el interbloqueo suele ser consecuencia de deficiencias en el diseño de las aplicaciones, el objetivo y conclusión técnica del algoritmo es identificar el estado de interbloqueo, no calificar el código fuente ni ordenar su eliminación automática [4, 5]."
+      }
+    ],
+    "respuesta_correcta": "c"
+  },
+  {
+    "id": 50,
+    "autoevaluacion": 2,
+    "unidad": 4,
+    "pregunta": "¿Qué criterio suele aplicarse para seleccionar qué proceso abortar cuando se resuelve un interbloqueo de forma selectiva?",
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "Siempre se elige el proceso que tiene mayor prioridad asignada por el sistema operativo.",
+        "explicacion": "Incorrecto. Aunque la prioridad puede ser un factor a considerar (menor prioridad), el criterio fundamental en la recuperación selectiva es minimizar el costo global para el sistema [1], [2], [3]."
+      },
+      {
+        "id": "b",
+        "texto": "Se selecciona el proceso que lleva más tiempo esperando en la cola de listos del sistema.",
+        "explicacion": "Incorrecto. El tiempo en la cola de listos es un parámetro de planificación para evitar la inanición, pero no es el criterio técnico utilizado para decidir qué proceso sacrificar en una situación de interbloqueo [4], [3]."
+      },
+      {
+        "id": "c",
+        "texto": "Se selecciona el proceso cuya terminación represente el menor costo para el sistema, como menor tiempo consumido o menor cantidad de recursos asignados.",
+        "explicacion": "Correcto. Las fuentes indican que al aplicar estrategias de recuperación por finalización sucesiva de procesos, se deben definir políticas de selección que impliquen un costo mínimo, como la menor cantidad de tiempo de procesador consumida o la menor cantidad de recursos asignados [1], [2], [3]."
+      },
+      {
+        "id": "d",
+        "texto": "Se elige aleatoriamente uno de los procesos involucrados en el interbloqueo para abortarlo.",
+        "explicacion": "Incorrecto. La recuperación del interbloqueo no es un proceso aleatorio; el sistema operativo busca restaurar el estado seguro afectando lo menos posible la productividad y el trabajo ya realizado por los procesos [1], [3]."
+      }
+    ],
+    "respuesta_correcta": "c"
   }
 ]

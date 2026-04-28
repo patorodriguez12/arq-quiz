@@ -13,6 +13,14 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
   const [autoevaluacion, setAutoevaluacion] = useState<1 | 2 | 3>(3);
   const [orden, setOrden] = useState<"aleatorio" | "orden">("aleatorio");
 
+  const maxPreguntas = autoevaluacion === 3 ? totalPreguntas : 25;
+
+  const handleAutoevaluacion = (val: 1 | 2 | 3) => {
+    setAutoevaluacion(val);
+    const nuevoMax = val === 3 ? totalPreguntas : 25;
+    if (cantidad > nuevoMax) setCantidad(nuevoMax);
+  };
+
   const handleStart = () => {
     onStart({ cantidad, autoevaluacion, orden });
   };
@@ -31,9 +39,9 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
           <div className="mt-4 h-px bg-[#1A1612]" />
         </div>
 
-        {/* Form */}
+        {/* Formulario */}
         <div className="space-y-10">
-          {/* Cantidad */}
+          {/* Selector de cantidad */}
           <div>
             <label className="block font-mono text-xs tracking-widest text-[#9B8B7A] uppercase mb-4">
               Cantidad de preguntas
@@ -42,7 +50,7 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
               <input
                 type="range"
                 min={5}
-                max={totalPreguntas}
+                max={maxPreguntas}
                 step={5}
                 value={cantidad}
                 onChange={(e) => setCantidad(Number(e.target.value))}
@@ -54,7 +62,7 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
             </div>
           </div>
 
-          {/* Autoevaluacion */}
+          {/* Selector de unidades */}
           <div>
             <label className="block font-mono text-xs tracking-widest text-[#9B8B7A] uppercase mb-4">
               Unidades
@@ -67,8 +75,8 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
               ].map((opt) => (
                 <button
                   key={opt.value}
-                  onClick={() => setAutoevaluacion(opt.value as 1 | 2 | 3)}
-                  className={`flex-1 py-3 font-mono text-xs tracking-widest uppercase border transition-colors ${
+                  onClick={() => handleAutoevaluacion(opt.value as 1 | 2 | 3)}
+                  className={`flex-1 p-2 py-3 font-mono text-xs tracking-widest uppercase border cursor-pointer transition-colors ${
                     autoevaluacion === opt.value
                       ? "bg-[#1A1612] text-[#F5F0E8] border-[#1A1612]"
                       : "bg-transparent text-[#1A1612] border-[#C4B89A] hover:border-[#1A1612]"
@@ -80,7 +88,7 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
             </div>
           </div>
 
-          {/* Orden */}
+          {/* Selector de orden */}
           <div>
             <label className="block font-mono text-xs tracking-widest text-[#9B8B7A] uppercase mb-4">
               Orden
@@ -93,7 +101,7 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
                 <button
                   key={opt.value}
                   onClick={() => setOrden(opt.value as "aleatorio" | "orden")}
-                  className={`flex-1 py-3 font-mono text-xs tracking-widest uppercase border transition-colors ${
+                  className={`flex-1 py-3 font-mono text-xs tracking-widest cursor-pointer uppercase border transition-colors ${
                     orden === opt.value
                       ? "bg-[#1A1612] text-[#F5F0E8] border-[#1A1612]"
                       : "bg-transparent text-[#1A1612] border-[#C4B89A] hover:border-[#1A1612]"
@@ -110,10 +118,20 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
         <div className="mt-16">
           <button
             onClick={handleStart}
-            className="w-full py-4 bg-[#1A1612] text-[#F5F0E8] font-mono text-xs tracking-widest uppercase hover:bg-[#2C2419] transition-colors"
+            className="w-full py-4 bg-[#1A1612] text-[#F5F0E8] font-mono text-xs tracking-widest cursor-pointer uppercase hover:bg-[#2C2419] transition-colors"
           >
             Comenzar
           </button>
+        </div>
+
+        {/* Firma Desarrollador */}
+        <div className="mt-16">
+          <p className="font-mono text-xs ">
+            Desarrollado por{" "}
+            <a href="https://github.com/patorodriguez12" target="_blank">
+              Hugo Patricio Rodriguez
+            </a>
+          </p>
         </div>
       </div>
     </div>

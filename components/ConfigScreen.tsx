@@ -26,7 +26,7 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F0E8] flex items-center justify-center px-6">
+    <div className="min-h-screen bg-[#F5F0E8] flex items-center justify-center px-6 pt-4">
       <div className="w-full max-w-lg">
         {/* Header */}
         <div className="mb-16">
@@ -64,14 +64,14 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
 
           {/* Selector de unidades */}
           <div>
-            <label className="block font-mono text-xs tracking-widest text-[#9B8B7A] uppercase mb-4">
+            <label className="block font-mono text-xs text-[#9B8B7A] uppercase mb-4">
               Unidades
             </label>
-            <div className="flex gap-2">
+            <div className="flex flex-col gap-2">
               {[
                 { value: 1, label: "Autoevaluacion 1 (Unidades 1, 2 y 3)" },
                 { value: 2, label: "Autoevaluacion 2 (Unidades 4 y 5)" },
-                { value: 3, label: "Ambas" },
+                { value: 3, label: "Ambas (recomendado)" },
               ].map((opt) => (
                 <button
                   key={opt.value}
@@ -95,7 +95,7 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
             </label>
             <div className="flex gap-2">
               {[
-                { value: "aleatorio", label: "Aleatorio" },
+                { value: "aleatorio", label: "Aleatorio (recomendado)" },
                 { value: "orden", label: "En orden" },
               ].map((opt) => (
                 <button
@@ -126,7 +126,7 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
 
         {/* Firma Desarrollador */}
         <div className="mt-16">
-          <p className="font-mono text-xs ">
+          <p className="font-mono text-xs pb-4">
             Desarrollado por{" "}
             <a href="https://github.com/patorodriguez12" target="_blank">
               Hugo Patricio Rodriguez

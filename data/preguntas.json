@@ -8,7 +8,7 @@
       {
         "id": "a",
         "texto": "Diseñar lenguajes de programación de alto nivel.",
-        "explicacion": "Incorrecto. Los compiladores, editores e intérpretes de comandos no forman parte del sistema operativo, sino que son utilidades que se ejecutan sobre él [1]."
+        "explicacion": "Incorrecto. Los compiladores, editores e intérpretes de comandos no forman parte del sistema operativo, sino que son utilidades que se ejecutan sobre él."
       },
       {
         "id": "b",
@@ -646,22 +646,22 @@
       {
         "id": "a",
         "texto": "El hilo bloqueado es migrado a otro proceso disponible para continuar su ejecución.",
-        "explicacion": "Incorrecto. Los hilos están ligados intrínsecamente al espacio de direcciones de su proceso original y no pueden ser migrados o administrados por un proceso distinto [1]."
+        "explicacion": "Incorrecto. Los hilos están ligados intrínsecamente al espacio de direcciones de su proceso original y no pueden ser migrados o administrados por un proceso distinto."
       },
       {
         "id": "b",
         "texto": "El kernel detecta el hilo bloqueado y ejecuta otro hilo del mismo proceso automáticamente.",
-        "explicacion": "Incorrecto. En el modelo ULT, el núcleo no gestiona los hilos y ni siquiera conoce su existencia; por lo tanto, no puede planificar un hilo individual de forma independiente [2, 3]."
+        "explicacion": "Incorrecto. En el modelo ULT, el núcleo no gestiona los hilos y ni siquiera conoce su existencia; por lo tanto, no puede planificar un hilo individual de forma independiente."
       },
       {
         "id": "c",
         "texto": "El proceso completo se bloquea, porque el kernel solo ve el proceso y no los hilos individuales dentro de él.",
-        "explicacion": "Correcto. Dado que el núcleo planifica el proceso como una única unidad, si un hilo realiza una llamada al sistema bloqueante, el sistema operativo pone a todo el proceso en estado bloqueado, deteniendo la ejecución de todos sus hilos [4-6]."
+        "explicacion": "Correcto. Dado que el núcleo planifica el proceso como una única unidad, si un hilo realiza una llamada al sistema bloqueante, el sistema operativo pone a todo el proceso en estado bloqueado, deteniendo la ejecución de todos sus hilos."
       },
       {
         "id": "d",
         "texto": "Solo se bloquea el hilo que realizó la llamada, los demás continúan ejecutándose con normalidad.",
-        "explicacion": "Incorrecto. Esta es una ventaja propia del modelo KLT (hilos en el espacio del núcleo), donde el SO sí tiene visibilidad de los hilos y puede planificar otro hilo del mismo proceso si uno se bloquea [7, 8]."
+        "explicacion": "Incorrecto. Esta es una ventaja propia del modelo KLT (hilos en el espacio del núcleo), donde el SO sí tiene visibilidad de los hilos y puede planificar otro hilo del mismo proceso si uno se bloquea."
       }
     ],
     "respuesta_correcta": "c"
@@ -675,22 +675,22 @@
       {
         "id": "a",
         "texto": "El cambio entre hilos en KLT no requiere ningún cambio de modo, lo que mejora la eficiencia.",
-        "explicacion": "Incorrecto. Al ser gestionados por el núcleo, el cambio de hilo en el modelo KLT conlleva necesariamente un cambio de modo para que el sistema operativo intervenga en la planificación, a diferencia de los ULT donde el cambio ocurre íntegramente en el espacio de usuario [1, 2]."
+        "explicacion": "Incorrecto. Al ser gestionados por el núcleo, el cambio de hilo en el modelo KLT conlleva necesariamente un cambio de modo para que el sistema operativo intervenga en la planificación, a diferencia de los ULT donde el cambio ocurre íntegramente en el espacio de usuario."
       },
       {
         "id": "b",
         "texto": "Los KLT no necesitan intervención del sistema operativo para planificar los hilos.",
-        "explicacion": "Incorrecto. Por definición, en un entorno KLT puro toda la gestión y planificación de los hilos la realiza el kernel a través de llamadas al sistema [3]."
+        "explicacion": "Incorrecto. Por definición, en un entorno KLT puro toda la gestión y planificación de los hilos la realiza el kernel a través de llamadas al sistema."
       },
       {
         "id": "c",
         "texto": "Si un hilo realiza una llamada bloqueante, el kernel puede ejecutar otro hilo del mismo proceso sin bloquear el proceso completo.",
-        "explicacion": "Correcto. Esta es la ventaja clave del enfoque KLT: como el kernel conoce y gestiona cada hilo individualmente, si uno se bloquea por una acción de E/S, puede asignar el procesador a otro hilo listo del mismo proceso en lugar de detenerlo por completo [2, 4]."
+        "explicacion": "Correcto. Esta es la ventaja clave del enfoque KLT: como el kernel conoce y gestiona cada hilo individualmente, si uno se bloquea por una acción de E/S, puede asignar el procesador a otro hilo listo del mismo proceso en lugar de detenerlo por completo."
       },
       {
         "id": "d",
         "texto": "Los KLT son siempre más rápidos que los ULT en cualquier operación del sistema.",
-        "explicacion": "Incorrecto. La creación y el cambio entre hilos KLT es considerablemente más costoso que en el enfoque ULT debido a la necesidad de intervención del sistema operativo y los cambios de modo asociados [2]."
+        "explicacion": "Incorrecto. La creación y el cambio entre hilos KLT es considerablemente más costoso que en el enfoque ULT debido a la necesidad de intervención del sistema operativo y los cambios de modo asociados."
       }
     ],
     "respuesta_correcta": "c"
@@ -704,22 +704,22 @@
       {
         "id": "a",
         "texto": "Los hilos en KLT no tienen acceso a los recursos del sistema operativo.",
-        "explicacion": "Incorrecto. Por definición, al ser gestionados directamente por el núcleo, los hilos KLT tienen pleno acceso a los recursos y servicios del sistema a través de las APIs proporcionadas [1, 2]."
+        "explicacion": "Incorrecto. Por definición, al ser gestionados directamente por el núcleo, los hilos KLT tienen pleno acceso a los recursos y servicios del sistema a través de las APIs proporcionadas."
       },
       {
         "id": "b",
         "texto": "Los KLT no permiten que las rutinas del kernel sean multihilo.",
-        "explicacion": "Incorrecto. El modelo KLT permite precisamente que tanto las aplicaciones de usuario como las propias rutinas del núcleo se beneficien de la ejecución multihilo [3]."
+        "explicacion": "Incorrecto. El modelo KLT permite precisamente que tanto las aplicaciones de usuario como las propias rutinas del núcleo se beneficien de la ejecución multihilo."
       },
       {
         "id": "c",
         "texto": "El cambio entre hilos implica un cambio de modo usuario/kernel, lo que tiene un costo elevado en rendimiento.",
-        "explicacion": "Correcto. Dado que toda la gestión y planificación de los hilos recae en el kernel, cualquier operación de creación o intercambio entre hilos requiere una llamada al sistema que obliga al procesador a cambiar de modo usuario a modo núcleo, lo que consume más tiempo y recursos que en los modelos ULT [1, 2]."
+        "explicacion": "Correcto. Dado que toda la gestión y planificación de los hilos recae en el kernel, cualquier operación de creación o intercambio entre hilos requiere una llamada al sistema que obliga al procesador a cambiar de modo usuario a modo núcleo, lo que consume más tiempo y recursos que en los modelos ULT."
       },
       {
         "id": "d",
         "texto": "El kernel no puede planificar múltiples hilos en distintos procesadores.",
-        "explicacion": "Incorrecto. Una de las ventajas fundamentales de que el núcleo gestione los hilos (KLT) es que puede planificar y ejecutar simultáneamente varios hilos de un mismo proceso en diferentes núcleos o procesadores físicos [2, 4]."
+        "explicacion": "Incorrecto. Una de las ventajas fundamentales de que el núcleo gestione los hilos (KLT) es que puede planificar y ejecutar simultáneamente varios hilos de un mismo proceso en diferentes núcleos o procesadores físicos."
       }
     ],
     "respuesta_correcta": "c"
@@ -733,22 +733,22 @@
       {
         "id": "a",
         "texto": "Ambos conceptos son equivalentes y presentan exactamente los mismos problemas de concurrencia.",
-        "explicacion": "Incorrecto. Aunque ambos presentan desafíos de concurrencia, no son equivalentes; la multiprogramación se basa en el entrelazado de tareas en un único procesador, mientras que el multiprocesamiento implica el uso de múltiples procesadores físicos [1, 2]."
+        "explicacion": "Incorrecto. Aunque ambos presentan desafíos de concurrencia, no son equivalentes; la multiprogramación se basa en el entrelazado de tareas en un único procesador, mientras que el multiprocesamiento implica el uso de múltiples procesadores físicos."
       },
       {
         "id": "b",
         "texto": "La concurrencia solo es relevante en multiprocesamiento, ya que en multiprogramación los procesos son siempre secuenciales.",
-        "explicacion": "Incorrecto. La concurrencia es un tema fundamental en la multiprogramación porque, a pesar de que los procesos se entrelazan para simular simultaneidad, surgen problemas al compartir recursos globales y no poder predecir la velocidad de ejecución de cada uno [1-3]."
+        "explicacion": "Incorrecto. La concurrencia es un tema fundamental en la multiprogramación porque, a pesar de que los procesos se entrelazan para simular simultaneidad, surgen problemas al compartir recursos globales y no poder predecir la velocidad de ejecución de cada uno."
       },
       {
         "id": "c",
         "texto": "En multiprogramación hay verdadero paralelismo; en multiprocesamiento los procesos se turnan en un único CPU.",
-        "explicacion": "Incorrecto. Las definiciones son inversas: el multiprocesamiento permite el paralelismo real de hardware, mientras que la multiprogramación proporciona una ilusión de paralelismo (pseudoparalelismo) mediante el intercambio rápido de tareas en un solo CPU [1, 2, 4]."
+        "explicacion": "Incorrecto. Las definiciones son inversas: el multiprocesamiento permite el paralelismo real de hardware, mientras que la multiprogramación proporciona una ilusión de paralelismo (pseudoparalelismo) mediante el intercambio rápido de tareas en un solo CPU."
       },
       {
         "id": "d",
         "texto": "En multiprogramación los procesos alternan en un CPU; en multiprocesamiento pueden ejecutarse simultáneamente en múltiples CPUs, pero ambos generan problemas de concurrencia.",
-        "explicacion": "Correcto. En la multiprogramación, el procesador alterna entre procesos (entrelazado), mientras que el multiprocesamiento permite la ejecución simultánea real; sin embargo, ambos modelos enfrentan problemas de diseño similares al gestionar procesos que compiten por recursos compartidos [1, 2]."
+        "explicacion": "Correcto. En la multiprogramación, el procesador alterna entre procesos (entrelazado), mientras que el multiprocesamiento permite la ejecución simultánea real; sin embargo, ambos modelos enfrentan problemas de diseño similares al gestionar procesos que compiten por recursos compartidos."
       }
     ],
     "respuesta_correcta": "d"
@@ -762,22 +762,22 @@
       {
         "id": "a",
         "texto": "Porque depende de la actividad de otros procesos, las interrupciones y las políticas de planificación del SO.",
-        "explicacion": "Correcto. En los sistemas multiprogramados, la velocidad de ejecución de un proceso no es constante ni predecible, ya que está supeditada a la carga de trabajo de otros procesos concurrentes, la gestión de las interrupciones por parte del sistema operativo y los criterios de planificación aplicados [1], [2]."
+        "explicacion": "Correcto. En los sistemas multiprogramados, la velocidad de ejecución de un proceso no es constante ni predecible, ya que está supeditada a la carga de trabajo de otros procesos concurrentes, la gestión de las interrupciones por parte del sistema operativo y los criterios de planificación aplicados,."
       },
       {
         "id": "b",
         "texto": "Porque el sistema operativo asigna tiempos de CPU de forma completamente aleatoria.",
-        "explicacion": "Incorrecto. El sistema operativo no utiliza el azar, sino que emplea algoritmos de planificación (como round-robin o colas de prioridad) diseñados para maximizar la productividad y garantizar un acceso equitativo a los recursos [3], [4], [5]."
+        "explicacion": "Incorrecto. El sistema operativo no utiliza el azar, sino que emplea algoritmos de planificación (como round-robin o colas de prioridad) diseñados para maximizar la productividad y garantizar un acceso equitativo a los recursos,, ."
       },
       {
         "id": "c",
         "texto": "Porque el hardware limita la velocidad máxima de cada proceso de forma aleatoria.",
-        "explicacion": "Incorrecto. El hardware tiene una capacidad de procesamiento definida; es la administración de recursos del sistema operativo la que determina cuánto de ese tiempo se asigna a cada programa en competencia [6], [3]."
+        "explicacion": "Incorrecto. El hardware tiene una capacidad de procesamiento definida; es la administración de recursos del sistema operativo la que determina cuánto de ese tiempo se asigna a cada programa en competenc,."
       },
       {
         "id": "d",
         "texto": "Porque la velocidad de ejecución depende exclusivamente del lenguaje de programación utilizado.",
-        "explicacion": "Incorrecto. Si bien el lenguaje influye en la eficiencia del código, la velocidad relativa de ejecución en un sistema con múltiples tareas depende primordialmente de la interacción con el entorno y la gestión del núcleo [1], [2]."
+        "explicacion": "Incorrecto. Si bien el lenguaje influye en la eficiencia del código, la velocidad relativa de ejecución en un sistema con múltiples tareas depende primordialmente de la interacción con el entorno y la gestión del núcleo,."
       }
     ],
     "respuesta_correcta": "a"
@@ -791,22 +791,22 @@
       {
         "id": "a",
         "texto": "Que el mismo código puede producir resultados distintos en diferentes ejecuciones dependiendo del orden de los procesos.",
-        "explicacion": "Correcto. En los sistemas multiprogramados, no se puede predecir la velocidad relativa de ejecución de los procesos, ya que esta depende de factores variables como las interrupciones y las políticas de planificación; por lo tanto, el orden de acceso a los recursos compartidos puede variar en cada ejecución [1, 2]."
+        "explicacion": "Correcto. En los sistemas multiprogramados, no se puede predecir la velocidad relativa de ejecución de los procesos, ya que esta depende de factores variables como las interrupciones y las políticas de planificación; por lo tanto, el orden de acceso a los recursos compartidos puede variar en cada ejecución."
       },
       {
         "id": "b",
         "texto": "Que los errores solo ocurren cuando el sistema está bajo carga máxima de procesamiento.",
-        "explicacion": "Incorrecto. Los errores de concurrencia, como las condiciones de carrera, surgen de la falta de coordinación en el acceso a recursos compartidos y pueden ocurrir independientemente del nivel de carga total del sistema [1, 3]."
+        "explicacion": "Incorrecto. Los errores de concurrencia, como las condiciones de carrera, surgen de la falta de coordinación en el acceso a recursos compartidos y pueden ocurrir independientemente del nivel de carga total del sistema."
       },
       {
         "id": "c",
         "texto": "Que los errores son siempre causados por fallos del hardware y no por el software.",
-        "explicacion": "Incorrecto. Problemas como el interbloqueo son generalmente fallos de diseño en las aplicaciones o en la lógica de sincronización del software, y no fallas físicas de los componentes [4, 5]."
+        "explicacion": "Incorrecto. Problemas como el interbloqueo son generalmente fallos de diseño en las aplicaciones o en la lógica de sincronización del software, y no fallas físicas de los componentes."
       },
       {
         "id": "d",
         "texto": "Que el sistema operativo no puede detectar ni registrar los errores producidos por la concurrencia.",
-        "explicacion": "Incorrecto. El sistema operativo dispone de mecanismos y algoritmos específicos para detectar situaciones de error concurrentes, como el interbloqueo, aunque su reproducción exacta sea difícil para el desarrollador [6, 7]."
+        "explicacion": "Incorrecto. El sistema operativo dispone de mecanismos y algoritmos específicos para detectar situaciones de error concurrentes, como el interbloqueo, aunque su reproducción exacta sea difícil para el desarrollador."
       }
     ],
     "respuesta_correcta": "a"
@@ -820,22 +820,22 @@
       {
         "id": "a",
         "texto": "Un mecanismo del sistema operativo para detectar errores en procesos paralelos.",
-        "explicacion": "Incorrecto. Los mecanismos de detección son herramientas utilizadas por el sistema para identificar fallos, mientras que la condición de carrera es el problema de diseño que se intenta prevenir [1, 2]."
+        "explicacion": "Incorrecto. Los mecanismos de detección son herramientas utilizadas por el sistema para identificar fallos, mientras que la condición de carrera es el problema de diseño que se intenta prevenir."
       },
       {
         "id": "b",
         "texto": "Un algoritmo que garantiza que los procesos accedan a los recursos en el orden correcto.",
-        "explicacion": "Incorrecto. Los algoritmos de sincronización (como semáforos) son los que garantizan el orden; la condición de carrera ocurre precisamente cuando no existe dicha garantía de acceso controlado [2-4]."
+        "explicacion": "Incorrecto. Los algoritmos de sincronización (como semáforos) son los que garantizan el orden; la condición de carrera ocurre precisamente cuando no existe dicha garantía de acceso controlado."
       },
       {
         "id": "c",
         "texto": "Una técnica para acelerar la ejecución de procesos concurrentes mediante prioridades.",
-        "explicacion": "Incorrecto. La condición de carrera es un conflicto que genera resultados impredecibles y no una técnica para mejorar el rendimiento o la velocidad del sistema [2, 5]."
+        "explicacion": "Incorrecto. La condición de carrera es un conflicto que genera resultados impredecibles y no una técnica para mejorar el rendimiento o la velocidad del sistema."
       },
       {
         "id": "d",
         "texto": "Una situación donde el resultado de un recurso compartido depende del orden de ejecución de los procesos.",
-        "explicacion": "Correcto. Por definición, sucede cuando múltiples hilos o procesos acceden a un dato compartido y el resultado final depende de la coordinación relativa o el entrelazado de sus ejecuciones [2, 3, 6]."
+        "explicacion": "Correcto. Por definición, sucede cuando múltiples hilos o procesos acceden a un dato compartido y el resultado final depende de la coordinación relativa o el entrelazado de sus ejecuciones."
       }
     ],
     "respuesta_correcta": "d"
@@ -849,22 +849,22 @@
       {
         "id": "a",
         "texto": "Porque sin protección, el orden de ejecución de los procesos puede producir resultados incorrectos e impredecibles.",
-        "explicacion": "Correcto. En los sistemas concurrentes **no se puede predecir la velocidad relativa de ejecución** de los procesos [1]. Sin la debida protección en las secciones críticas, el entrelazado de las instrucciones puede causar que el resultado final dependa de un orden de ejecución aleatorio, provocando inconsistencias [2], [3]."
+        "explicacion": "Correcto. En los sistemas concurrentes **no se puede predecir la velocidad relativa de ejecución** de los procesos. Sin la debida protección en las secciones críticas, el entrelazado de las instrucciones puede causar que el resultado final dependa de un orden de ejecución aleatorio, provocando inconsistencias,."
       },
       {
         "id": "b",
         "texto": "Porque los lenguajes de programación no permiten que dos funciones accedan a la misma variable global.",
-        "explicacion": "Incorrecto. Los lenguajes de programación sí permiten el uso de variables globales compartidas; el problema es que, si no se coordina el acceso, un proceso puede modificar un dato mientras otro lo está usando, perdiendo información [4], [5]."
+        "explicacion": "Incorrecto. Los lenguajes de programación sí permiten el uso de variables globales compartidas; el problema es que, si no se coordina el acceso, un proceso puede modificar un dato mientras otro lo está usando, perdiendo información."
       },
       {
         "id": "c",
         "texto": "Porque el hardware no puede manejar accesos simultáneos a la memoria principal del sistema.",
-        "explicacion": "Incorrecto. El hardware de memoria es un recurso que el sistema operativo **fracciona y asigna** a los procesos [6]. El reto de la concurrencia no es una limitación física del hardware, sino la necesidad de una administración lógica para evitar conflictos de datos [7], [8]."
+        "explicacion": "Incorrecto. El hardware de memoria es un recurso que el sistema operativo **fracciona y asigna** a los proces. El reto de la concurrencia no es una limitación física del hardware, sino la necesidad de una administración lógica para evitar conflictos de datos."
       },
       {
         "id": "d",
         "texto": "Porque el sistema operativo prohíbe que dos procesos usen el mismo recurso en cualquier momento.",
-        "explicacion": "Incorrecto. Una función central del sistema operativo es precisamente permitir que los programas **compitan y compartan recursos** de forma controlada [9], [10]. La protección no prohíbe el uso, sino que garantiza que el acceso sea ordenado mediante técnicas como la **exclusión mutua** [11]."
+        "explicacion": "Incorrecto. Una función central del sistema operativo es precisamente permitir que los programas **compitan y compartan recursos** de forma controlada. La protección no prohíbe el uso, sino que garantiza que el acceso sea ordenado mediante técnicas como la **exclusión mutua**."
       }
     ],
     "respuesta_correcta": "a"
@@ -878,22 +878,22 @@
       {
         "id": "a",
         "texto": "Los procesos se sincronizan automáticamente mediante el planificador del sistema operativo.",
-        "explicacion": "Incorrecto. Aunque el planificador gestiona su ejecución, la sincronización es un mecanismo de coordinación que estos procesos no poseen por definición, ya que son independientes y no trabajan de forma conjunta [1], [2], [3]."
+        "explicacion": "Incorrecto. Aunque el planificador gestiona su ejecución, la sincronización es un mecanismo de coordinación que estos procesos no poseen por definición, ya que son independientes y no trabajan de forma conjunta."
       },
       {
         "id": "b",
         "texto": "Los procesos compiten de forma independiente por los recursos del sistema sin ningún tipo de coordinación.",
-        "explicacion": "Correcto. Este escenario describe a los procesos que no se perciben entre sí; son entidades independientes que compiten por el uso de recursos (como el procesador o dispositivos de E/S), y es responsabilidad del sistema operativo gestionar dicha competencia [4], [3]."
+        "explicacion": "Correcto. Este escenario describe a los procesos que no se perciben entre sí; son entidades independientes que compiten por el uso de recursos (como el procesador o dispositivos de E/S), y es responsabilidad del sistema operativo gestionar dicha competencia."
       },
       {
         "id": "c",
         "texto": "Los procesos cooperan implícitamente compartiendo el espacio de memoria del sistema operativo.",
-        "explicacion": "Incorrecto. La cooperación por compartición implica que los procesos se perciben indirectamente a través de un objeto común (como memoria compartida) y requieren garantizar la consistencia de los datos, algo que no sucede si no hay intercambio de información [5], [6]."
+        "explicacion": "Incorrecto. La cooperación por compartición implica que los procesos se perciben indirectamente a través de un objeto común (como memoria compartida) y requieren garantizar la consistencia de los datos, algo que no sucede si no hay intercambio de información."
       },
       {
         "id": "d",
         "texto": "Los procesos se comunican a través de señales del sistema operativo para coordinar sus ejecuciones.",
-        "explicacion": "Incorrecto. El uso de señales o mensajes para la coordinación es propio de la cooperación por comunicación, donde los procesos se perciben directamente y están diseñados específicamente para trabajar en conjunto [7], [3]."
+        "explicacion": "Incorrecto. El uso de señales o mensajes para la coordinación es propio de la cooperación por comunicación, donde los procesos se perciben directamente y están diseñados específicamente para trabajar en conjunto."
       }
     ],
     "respuesta_correcta": "b"
@@ -907,22 +907,22 @@
       {
         "id": "a",
         "texto": "Cooperan por comunicación, enviándose mensajes de sincronización.",
-        "explicacion": "Incorrecto. La cooperación por comunicación es una forma de interacción donde los procesos se perciben directamente, conocen sus identidades y están diseñados específicamente para trabajar en conjunto mediante el intercambio de mensajes [1, 2]."
+        "explicacion": "Incorrecto. La cooperación por comunicación es una forma de interacción donde los procesos se perciben directamente, conocen sus identidades y están diseñados específicamente para trabajar en conjunto mediante el intercambio de mensajes."
       },
       {
         "id": "b",
         "texto": "Se perciben directamente entre sí, ya que conocen el PID del otro proceso.",
-        "explicacion": "Incorrecto. La percepción directa implica que los procesos tienen un conocimiento explícito de la existencia del otro, generalmente a través de sus identificadores de proceso (PID), lo que les permite coordinarse de forma deliberada [1]."
+        "explicacion": "Incorrecto. La percepción directa implica que los procesos tienen un conocimiento explícito de la existencia del otro, generalmente a través de sus identificadores de proceso (PID), lo que les permite coordinarse de forma deliberada."
       },
       {
         "id": "c",
         "texto": "Se perciben indirectamente entre sí, compitiendo por recursos compartidos como memoria o dispositivos de E/S.",
-        "explicacion": "Correcto. Esta situación describe la cooperación por compartición, donde los procesos no se conocen explícitamente pero se perciben de forma indirecta al interactuar con un objeto común (como memoria compartida), lo que requiere mecanismos para garantizar la consistencia de los datos [1, 3]."
+        "explicacion": "Correcto. Esta situación describe la cooperación por compartición, donde los procesos no se conocen explícitamente pero se perciben de forma indirecta al interactuar con un objeto común (como memoria compartida), lo que requiere mecanismos para garantizar la consistencia de los datos."
       },
       {
         "id": "d",
         "texto": "No se perciben entre sí, siendo completamente independientes sin intercambio de información.",
-        "explicacion": "Incorrecto. Este escenario corresponde a la competencia pura, donde los procesos son entidades independientes que no realizan intercambio de información ni tienen noción de la existencia de otros procesos, aunque compitan por el uso de recursos críticos del sistema [4]."
+        "explicacion": "Incorrecto. Este escenario corresponde a la competencia pura, donde los procesos son entidades independientes que no realizan intercambio de información ni tienen noción de la existencia de otros procesos, aunque compitan por el uso de recursos críticos del sistema."
       }
     ],
     "respuesta_correcta": "c"
@@ -936,22 +936,22 @@
       {
         "id": "a",
         "texto": "Un estado donde todos los procesos del sistema se bloquean mutuamente esperando recursos.",
-        "explicacion": "Incorrecto. Esta definición corresponde al interbloqueo (deadlock), donde el bloqueo es permanente debido a que cada proceso en un conjunto espera por un evento que solo puede generar otro proceso ya bloqueado [1]."
+        "explicacion": "Incorrecto. Esta definición corresponde al interbloqueo (deadlock), donde el bloqueo es permanente debido a que cada proceso en un conjunto espera por un evento que solo puede generar otro proceso ya bloqueado."
       },
       {
         "id": "b",
         "texto": "Un proceso que consume todos los recursos del sistema impidiendo la ejecución de otros procesos.",
-        "explicacion": "Incorrecto. Si bien un proceso puede monopolizar recursos, la inanición se centra específicamente en el proceso que es privado sistemáticamente de ellos, impidiéndole avanzar [2], [3]."
+        "explicacion": "Incorrecto. Si bien un proceso puede monopolizar recursos, la inanición se centra específicamente en el proceso que es privado sistemáticamente de ellos, impidiéndole avanzar."
       },
       {
         "id": "c",
         "texto": "Un error del sistema operativo que provoca la terminación abrupta de procesos en espera.",
-        "explicacion": "Incorrecto. La inanición no es una terminación por error de software, sino una falta de progreso debido a que los recursos necesarios no son asignados al proceso por las políticas de planificación [3], [4]."
+        "explicacion": "Incorrecto. La inanición no es una terminación por error de software, sino una falta de progreso debido a que los recursos necesarios no son asignados al proceso por las políticas de planificación."
       },
       {
         "id": "d",
         "texto": "Una situación donde un proceso nunca puede terminar su ejecución porque sistemáticamente no obtiene acceso a los recursos que necesita.",
-        "explicacion": "Correcto. La inanición ocurre cuando un proceso es postergado indefinidamente y no puede finalizar su ejecución al no obtener acceso a recursos críticos, como el procesador, debido a las decisiones del algoritmo de planificación [2], [3], [4]."
+        "explicacion": "Correcto. La inanición ocurre cuando un proceso es postergado indefinidamente y no puede finalizar su ejecución al no obtener acceso a recursos críticos, como el procesador, debido a las decisiones del algoritmo de planificación."
       }
     ],
     "respuesta_correcta": "d"
@@ -965,22 +965,22 @@
       {
         "id": "a",
         "texto": "Porque en sistemas multiprocesador, deshabilitar interrupciones en un procesador no impide que otro acceda a la sección crítica simultáneamente.",
-        "explicacion": "Correcto. La deshabilitación de interrupciones es una técnica donde el proceso actual impide ser interrumpido para garantizar el uso exclusivo del CPU. Sin embargo, en arquitecturas multiprocesador, otros procesadores pueden seguir ejecutando hilos que accedan a la misma sección crítica o recursos compartidos de forma paralela [1], [2]."
+        "explicacion": "Correcto. La deshabilitación de interrupciones es una técnica donde el proceso actual impide ser interrumpido para garantizar el uso exclusivo del CPU. Sin embargo, en arquitecturas multiprocesador, otros procesadores pueden seguir ejecutando hilos que accedan a la misma sección crítica o recursos compartidos de forma paralela."
       },
       {
         "id": "b",
         "texto": "Porque en multiprocesadores las interrupciones no existen como mecanismo del sistema.",
-        "explicacion": "Incorrecto. Las interrupciones son mecanismos fundamentales de hardware en cualquier arquitectura moderna, incluyendo las de múltiples procesadores, para la gestión de E/S y la comunicación con el núcleo [3], [2]."
+        "explicacion": "Incorrecto. Las interrupciones son mecanismos fundamentales de hardware en cualquier arquitectura moderna, incluyendo las de múltiples procesadores, para la gestión de E/S y la comunicación con el núcleo."
       },
       {
         "id": "c",
         "texto": "Porque la deshabilitación de interrupciones consume demasiados recursos en sistemas multiprocesador.",
-        "explicacion": "Incorrecto. El problema no es el consumo de recursos, sino la ineficacia de la técnica; aunque deshabilitar interrupciones degrada el rendimiento al eliminar el intercambio de procesos, el fallo principal en multiprocesadores es que no garantiza la exclusión mutua real [1], [2]."
+        "explicacion": "Incorrecto. El problema no es el consumo de recursos, sino la ineficacia de la técnica; aunque deshabilitar interrupciones degrada el rendimiento al eliminar el intercambio de procesos, el fallo principal en multiprocesadores es que no garantiza la exclusión mutua real."
       },
       {
         "id": "d",
         "texto": "Porque los procesadores múltiples no soportan instrucciones de deshabilitar interrupciones.",
-        "explicacion": "Incorrecto. Los procesadores modernos soportan estas instrucciones; la limitación es lógica, ya que la instrucción solo afecta al procesador local que la ejecuta y no al estado de los demás procesadores del sistema [2]."
+        "explicacion": "Incorrecto. Los procesadores modernos soportan estas instrucciones; la limitación es lógica, ya que la instrucción solo afecta al procesador local que la ejecuta y no al estado de los demás procesadores del sistema."
       }
     ],
     "respuesta_correcta": "a"
@@ -994,22 +994,22 @@
       {
         "id": "a",
         "texto": "Un algoritmo de planificación que ordena los procesos según su prioridad de acceso.",
-        "explicacion": "Incorrecto. Mientras que el planificador gestiona el orden de ejecución mediante prioridades, los semáforos son herramientas de sincronización diseñadas específicamente para controlar el acceso a secciones críticas de código [1]."
+        "explicacion": "Incorrecto. Mientras que el planificador gestiona el orden de ejecución mediante prioridades, los semáforos son herramientas de sincronización diseñadas específicamente para controlar el acceso a secciones críticas de código."
       },
       {
         "id": "b",
         "texto": "Un módulo del kernel que reemplaza completamente al mecanismo de interrupciones del procesador.",
-        "explicacion": "Incorrecto. Los semáforos son una técnica de software que no sustituye a las interrupciones; de hecho, la deshabilitación de interrupciones es un mecanismo de hardware independiente para lograr exclusión mutua en sistemas monoprocesador [1, 2]."
+        "explicacion": "Incorrecto. Los semáforos son una técnica de software que no sustituye a las interrupciones; de hecho, la deshabilitación de interrupciones es un mecanismo de hardware independiente para lograr exclusión mutua en sistemas monoprocesador."
       },
       {
         "id": "c",
         "texto": "Una estructura que permite sincronizar el acceso a recursos críticos mediante el uso de señales entre procesos.",
-        "explicacion": "Correcto. Los semáforos son estructuras que permiten que dos o más procesos colaboren mediante señales (como semWait y semSignal), obligando a un proceso a detenerse en un punto específico hasta que reciba la señal necesaria para continuar de forma segura [1, 3]."
+        "explicacion": "Correcto. Los semáforos son estructuras que permiten que dos o más procesos colaboren mediante señales (como semWait y semSignal), obligando a un proceso a detenerse en un punto específico hasta que reciba la señal necesaria para continuar de forma segura."
       },
       {
         "id": "d",
         "texto": "Un componente de hardware que controla físicamente el acceso a dispositivos compartidos.",
-        "explicacion": "Incorrecto. Los semáforos se definen como una técnica por software. El control de acceso físico suele involucrar mecanismos de hardware específicos como instrucciones especiales del procesador (testAndSet) o deshabilitación de interrupciones [1, 2]."
+        "explicacion": "Incorrecto. Los semáforos se definen como una técnica por software. El control de acceso físico suele involucrar mecanismos de hardware específicos como instrucciones especiales del procesador (testAndSet) o deshabilitación de interrupciones."
       }
     ],
     "respuesta_correcta": "c"
@@ -1023,22 +1023,22 @@
       {
         "id": "a",
         "texto": "Los semáforos comunes son implementados por hardware y los binarios exclusivamente por software.",
-        "explicacion": "Incorrecto. Los semáforos se definen como técnicas de sincronización por software [1]. El soporte por hardware se refiere a otros mecanismos como la deshabilitación de interrupciones o instrucciones especiales del procesador como testAndSet [2, 3]."
+        "explicacion": "Incorrecto. Los semáforos se definen como técnicas de sincronización por software. El soporte por hardware se refiere a otros mecanismos como la deshabilitación de interrupciones o instrucciones especiales del procesador como testAndSet."
       },
       {
         "id": "b",
         "texto": "El semáforo común solo puede tomar valores 0 y 1, mientras que el binario puede tomar cualquier valor entero positivo.",
-        "explicacion": "Incorrecto. Esta opción invierte las definiciones de ambos tipos de semáforos; el semáforo binario es el que tiene su rango limitado [4, 5]."
+        "explicacion": "Incorrecto. Esta opción invierte las definiciones de ambos tipos de semáforos; el semáforo binario es el que tiene su rango limitado."
       },
       {
         "id": "c",
         "texto": "El semáforo binario solo puede tomar los valores 0 y 1, mientras que el común puede tomar cualquier valor entero no negativo.",
-        "explicacion": "Correcto. Según las fuentes, un semáforo binario solo puede tomar los valores 0 y 1, mientras que un semáforo general (o con contador) puede inicializarse y operar con cualquier valor entero no negativo para coordinar procesos [4-6]."
+        "explicacion": "Correcto. Según las fuentes, un semáforo binario solo puede tomar los valores 0 y 1, mientras que un semáforo general (o con contador) puede inicializarse y operar con cualquier valor entero no negativo para coordinar procesos."
       },
       {
         "id": "d",
         "texto": "Los semáforos comunes no requieren operaciones atómicas, pero los binarios sí las necesitan.",
-        "explicacion": "Incorrecto. Se asume que las operaciones fundamentales de cualquier semáforo (semWait y semSignal) son atómicas, lo que significa que no pueden ser interrumpidas para garantizar la integridad de la sincronización [4]."
+        "explicacion": "Incorrecto. Se asume que las operaciones fundamentales de cualquier semáforo (semWait y semSignal) son atómicas, lo que significa que no pueden ser interrumpidas para garantizar la integridad de la sincronización."
       }
     ],
     "respuesta_correcta": "c"
@@ -1052,22 +1052,22 @@
       {
         "id": "a",
         "texto": "Reducen la complejidad y la posibilidad de errores en la implementación del control de acceso a recursos compartidos.",
-        "explicacion": "Correcto. A diferencia de los semáforos, cuya implementación manual puede ser difícil y propensa a fallos, los monitores son construcciones del lenguaje de programación que encapsulan los datos y garantizan automáticamente que solo un proceso acceda a ellos a la vez, simplificando el diseño de sistemas concurrentes [1-3]."
+        "explicacion": "Correcto. A diferencia de los semáforos, cuya implementación manual puede ser difícil y propensa a fallos, los monitores son construcciones del lenguaje de programación que encapsulan los datos y garantizan automáticamente que solo un proceso acceda a ellos a la vez, simplificando el diseño de sistemas concurrentes."
       },
       {
         "id": "b",
         "texto": "Los monitores pueden proteger más secciones críticas simultáneamente que los semáforos.",
-        "explicacion": "Incorrecto. Ambas herramientas son capaces de gestionar múltiples secciones críticas; la ventaja del monitor no reside en la cantidad de recursos que puede proteger, sino en la seguridad y el orden que impone su estructura jerárquica y encapsulada [1, 2, 4]."
+        "explicacion": "Incorrecto. Ambas herramientas son capaces de gestionar múltiples secciones críticas; la ventaja del monitor no reside en la cantidad de recursos que puede proteger, sino en la seguridad y el orden que impone su estructura jerárquica y encapsulada."
       },
       {
         "id": "c",
         "texto": "Los monitores son más rápidos que los semáforos porque no requieren llamadas al sistema operativo.",
-        "explicacion": "Incorrecto. Los monitores son abstracciones de alto nivel que generalmente dependen de mecanismos subyacentes del sistema operativo para su funcionamiento. El beneficio es la organización y legibilidad del código, no necesariamente un mayor rendimiento en la ejecución [1, 5, 6]."
+        "explicacion": "Incorrecto. Los monitores son abstracciones de alto nivel que generalmente dependen de mecanismos subyacentes del sistema operativo para su funcionamiento. El beneficio es la organización y legibilidad del código, no necesariamente un mayor rendimiento en la ejecución."
       },
       {
         "id": "d",
         "texto": "Los monitores eliminan completamente la posibilidad de starvation en sistemas concurrentes.",
-        "explicacion": "Incorrecto. Aunque los monitores gestionan colas de espera para las variables de condición, no garantizan por sí mismos la ausencia de inanición (starvation), ya que esta depende de las políticas de planificación y de cómo se emitan las señales de reactivación [7, 8]."
+        "explicacion": "Incorrecto. Aunque los monitores gestionan colas de espera para las variables de condición, no garantizan por sí mismos la ausencia de inanición (starvation), ya que esta depende de las políticas de planificación y de cómo se emitan las señales de reactivación."
       }
     ],
     "respuesta_correcta": "a"
@@ -1139,22 +1139,22 @@
       {
         "id": "a",
         "texto": "Escasez de memoria RAM que impide que los procesos carguen sus datos en memoria principal.",
-        "explicacion": "Incorrecto. Aunque la falta de memoria RAM afecta el rendimiento general y puede forzar el uso de swapping, el interbloqueo es un fenómeno lógico derivado de la gestión conflictiva de recursos, no simplemente de la insuficiencia física de los mismos [1], [2]."
+        "explicacion": "Incorrecto. Aunque la falta de memoria RAM afecta el rendimiento general y puede forzar el uso de swapping, el interbloqueo es un fenómeno lógico derivado de la gestión conflictiva de recursos, no simplemente de la insuficiencia física de los mismos."
       },
       {
         "id": "b",
         "texto": "Errores internos del sistema operativo al gestionar la tabla de procesos.",
-        "explicacion": "Incorrecto. El sistema operativo proporciona las herramientas y tablas para la gestión, pero el interbloqueo suele ser consecuencia de cómo los procesos de usuario interactúan y compiten entre sí por los recursos del sistema [2]."
+        "explicacion": "Incorrecto. El sistema operativo proporciona las herramientas y tablas para la gestión, pero el interbloqueo suele ser consecuencia de cómo los procesos de usuario interactúan y compiten entre sí por los recursos del sistema."
       },
       {
         "id": "c",
         "texto": "Deficiencias en el diseño de las aplicaciones que no gestionan correctamente la solicitud de recursos.",
-        "explicacion": "Correcto. Las fuentes indican explícitamente que la causa del interbloqueo es, por lo general, un problema de diseño de las aplicaciones, cuya detección es difícil porque depende de secuencias específicas de ejecución de las instrucciones [2], [3]."
+        "explicacion": "Correcto. Las fuentes indican explícitamente que la causa del interbloqueo es, por lo general, un problema de diseño de las aplicaciones, cuya detección es difícil porque depende de secuencias específicas de ejecución de las instrucciones."
       },
       {
         "id": "d",
         "texto": "Fallos físicos en los componentes de hardware del sistema como la memoria o el disco.",
-        "explicacion": "Incorrecto. Los fallos físicos provocan errores de hardware o caídas del sistema, mientras que el interbloqueo (deadlock) se define como el bloqueo permanente de carácter lógico de un conjunto de procesos debido a necesidades conflictivas de recursos [4], [1]."
+        "explicacion": "Incorrecto. Los fallos físicos provocan errores de hardware o caídas del sistema, mientras que el interbloqueo (deadlock) se define como el bloqueo permanente de carácter lógico de un conjunto de procesos debido a necesidades conflictivas de recursos."
       }
     ],
     "respuesta_correcta": "c"
@@ -1168,22 +1168,22 @@
       {
         "id": "a",
         "texto": "Cuando el proceso A espera un mensaje de B con receive bloqueante y B a su vez espera un mensaje de A, bloqueándose mutuamente.",
-        "explicacion": "Correcto. Los recursos consumibles (como señales o mensajes) pueden generar interbloqueo si se produce una secuencia de ejecución en la que dos o más procesos quedan bloqueados esperando un evento o mensaje que solo puede ser generado por otro proceso que también está bloqueado [1], [2]."
+        "explicacion": "Correcto. Los recursos consumibles (como señales o mensajes) pueden generar interbloqueo si se produce una secuencia de ejecución en la que dos o más procesos quedan bloqueados esperando un evento o mensaje que solo puede ser generado por otro proceso que también está bloqueado."
       },
       {
         "id": "b",
         "texto": "Cuando el sistema operativo no tiene suficiente memoria para almacenar los mensajes en tránsito.",
-        "explicacion": "Incorrecto. La escasez de memoria RAM es un problema relacionado con recursos reutilizables o gestión de almacenamiento, mientras que el interbloqueo por mensajes es una situación lógica de espera mutua irresoluble [3], [2]."
+        "explicacion": "Incorrecto. La escasez de memoria RAM es un problema relacionado con recursos reutilizables o gestión de almacenamiento, mientras que el interbloqueo por mensajes es una situación lógica de espera mutua irresoluble,."
       },
       {
         "id": "c",
         "texto": "Cuando un proceso envía un mensaje a sí mismo y queda esperando su propia respuesta.",
-        "explicacion": "Incorrecto. El interbloqueo se define como el bloqueo permanente de un conjunto de procesos (dos o más) que dependen entre sí; un error en la lógica interna de un solo proceso que lo detiene no se categoriza como interbloqueo del sistema [4], [2]."
+        "explicacion": "Incorrecto. El interbloqueo se define como el bloqueo permanente de un conjunto de procesos (dos o más) que dependen entre sí; un error en la lógica interna de un solo proceso que lo detiene no se categoriza como interbloqueo del sistema."
       },
       {
         "id": "d",
         "texto": "Cuando dos procesos envían mensajes al mismo buzón de mensajes simultáneamente.",
-        "explicacion": "Incorrecto. El acceso simultáneo a un buzón (direccionamiento indirecto) es una operación normal de comunicación que el sistema operativo gestiona mediante colas, y no provoca interbloqueo a menos que se cumplan las condiciones de espera circular [5], [2]."
+        "explicacion": "Incorrecto. El acceso simultáneo a un buzón (direccionamiento indirecto) es una operación normal de comunicación que el sistema operativo gestiona mediante colas, y no provoca interbloqueo a menos que se cumplan las condiciones de espera circular."
       }
     ],
     "respuesta_correcta": "a"
@@ -1197,22 +1197,22 @@
       {
         "id": "a",
         "texto": "Porque la aparición del interbloqueo depende de la secuencia de ejecución de las instrucciones, que es difícil de predecir y reproducir.",
-        "explicacion": "Correcto. Los interbloqueos que involucran recursos consumibles son particularmente complejos porque su aparición está ligada a la dinámica de ejecución y a secuencias específicas de peticiones que pueden no repetirse en todas las corridas del programa [1, 2]."
+        "explicacion": "Correcto. Los interbloqueos que involucran recursos consumibles son particularmente complejos porque su aparición está ligada a la dinámica de ejecución y a secuencias específicas de peticiones que pueden no repetirse en todas las corridas del programa."
       },
       {
         "id": "b",
         "texto": "Porque los recursos consumibles no pueden ser monitoreados por el algoritmo de detección estándar.",
-        "explicacion": "Incorrecto. El sistema operativo puede emplear algoritmos de detección periódicos basados en matrices de asignación y solicitud para identificar esperas circulares, incluso en recursos consumibles; el problema no es la falta de monitoreo, sino la naturaleza no determinista del fallo [3, 4]."
+        "explicacion": "Incorrecto. El sistema operativo puede emplear algoritmos de detección periódicos basados en matrices de asignación y solicitud para identificar esperas circulares, incluso en recursos consumibles; el problema no es la falta de monitoreo, sino la naturaleza no determinista del fallo."
       },
       {
         "id": "c",
         "texto": "Porque el sistema operativo no tiene acceso al contenido de los mensajes intercambiados.",
-        "explicacion": "Incorrecto. El núcleo es el encargado de gestionar las primitivas de comunicación (send y receive) y los buzones, por lo que tiene el control técnico sobre el flujo de los mensajes entre procesos [5, 6]."
+        "explicacion": "Incorrecto. El núcleo es el encargado de gestionar las primitivas de comunicación (send y receive) y los buzones, por lo que tiene el control técnico sobre el flujo de los mensajes entre procesos."
       },
       {
         "id": "d",
         "texto": "Porque los mensajes no dejan rastro en el sistema una vez que son consumidos por el proceso.",
-        "explicacion": "Incorrecto. El interbloqueo ocurre cuando los procesos quedan bloqueados esperando un mensaje que nunca llega. Una vez que un mensaje es consumido, el recurso deja de existir, pero el problema del interbloqueo reside en la espera previa e irresoluble [7, 8]."
+        "explicacion": "Incorrecto. El interbloqueo ocurre cuando los procesos quedan bloqueados esperando un mensaje que nunca llega. Una vez que un mensaje es consumido, el recurso deja de existir, pero el problema del interbloqueo reside en la espera previa e irresoluble."
       }
     ],
     "respuesta_correcta": "a"
@@ -1226,22 +1226,22 @@
       {
         "id": "a",
         "texto": "La planificación por prioridades que hace que ciertos procesos nunca obtengan los recursos.",
-        "explicacion": "Incorrecto. La planificación por prioridades puede derivar en problemas de inanición (starvation), donde un proceso es postergado indefinidamente, pero no constituye una de las condiciones lógicas que definen el estado de interbloqueo [1, 2]."
+        "explicacion": "Incorrecto. La planificación por prioridades puede derivar en problemas de inanición (starvation), donde un proceso es postergado indefinidamente, pero no constituye una de las condiciones lógicas que definen el estado de interbloqueo."
       },
       {
         "id": "b",
         "texto": "La espera circular, donde cada proceso de una lista cerrada posee un recurso requerido por el siguiente proceso de la lista.",
-        "explicacion": "Correcto. Según las fuentes, las tres primeras condiciones (exclusión mutua, retención y espera, y sin expropiación) son necesarias pero no suficientes; es la presencia de una espera circular la que completa el conjunto de condiciones necesarias y suficientes para que exista un interbloqueo [3-5]."
+        "explicacion": "Correcto. Según las fuentes, las tres primeras condiciones (exclusión mutua, retención y espera, y sin expropiación) son necesarias pero no suficientes; es la presencia de una espera circular la que completa el conjunto de condiciones necesarias y suficientes para que exista un interbloqueo."
       },
       {
         "id": "c",
         "texto": "La existencia de recursos consumibles en el sistema que pueden agotarse permanentemente.",
-        "explicacion": "Incorrecto. Aunque los recursos consumibles pueden estar involucrados en situaciones de interbloqueo, su existencia no es la condición teórica que convierte a las demás en suficientes; esa función la cumple específicamente la espera circular [3, 6]."
+        "explicacion": "Incorrecto. Aunque los recursos consumibles pueden estar involucrados en situaciones de interbloqueo, su existencia no es la condición teórica que convierte a las demás en suficientes; esa función la cumple específicamente la espera circular."
       },
       {
         "id": "d",
         "texto": "El uso de semáforos binarios que impiden el acceso simultáneo a múltiples secciones críticas.",
-        "explicacion": "Incorrecto. Los semáforos binarios son herramientas de software para implementar la exclusión mutua y la sincronización; aunque una mala implementación puede causar bloqueos, no son una de las cuatro condiciones fundamentales del interbloqueo [5, 7]."
+        "explicacion": "Incorrecto. Los semáforos binarios son herramientas de software para implementar la exclusión mutua y la sincronización; aunque una mala implementación puede causar bloqueos, no son una de las cuatro condiciones fundamentales del interbloqueo."
       }
     ],
     "respuesta_correcta": "b"
@@ -1255,22 +1255,22 @@
       {
         "id": "a",
         "texto": "La condición de \"sin expropiación\", ya que el SO puede forzar la liberación de recursos asignados.",
-        "explicacion": "Correcto. Por definición, la condición de 'sin expropiación' establece que el sistema operativo no puede retirar un recurso a un proceso que ya lo tiene asignado [1]. Si el sistema implementa mecanismos para expropiar recursos de un proceso (por ejemplo, si está bloqueado) para asignarlos a otro, esta condición necesaria para el interbloqueo queda eliminada [2, 3]."
+        "explicacion": "Correcto. Por definición, la condición de 'sin expropiación' establece que el sistema operativo no puede retirar un recurso a un proceso que ya lo tiene asignado. Si el sistema implementa mecanismos para expropiar recursos de un proceso (por ejemplo, si está bloqueado) para asignarlos a otro, esta condición necesaria para el interbloqueo queda eliminada."
       },
       {
         "id": "b",
         "texto": "La condición de exclusión mutua, ya que los recursos pasan a ser compartidos por varios procesos.",
-        "explicacion": "Incorrecto. La exclusión mutua significa que solo un proceso puede acceder a un recurso a la vez [4]. Quitar un recurso para dárselo a otro proceso sigue manteniendo la exclusión mutua (solo uno lo usa), pero cambia quién lo posee por la fuerza [3]."
+        "explicacion": "Incorrecto. La exclusión mutua significa que solo un proceso puede acceder a un recurso a la vez. Quitar un recurso para dárselo a otro proceso sigue manteniendo la exclusión mutua (solo uno lo usa), pero cambia quién lo posee por la fuerza."
       },
       {
         "id": "c",
         "texto": "La condición de espera circular, ya que se rompe la cadena de procesos esperando recursos.",
-        "explicacion": "Incorrecto. Aunque la expropiación puede ayudar a romper una espera circular ya existente, la condición que se ataca directamente al permitir que el SO retire recursos es la de 'sin expropiación' [3, 5]."
+        "explicacion": "Incorrecto. Aunque la expropiación puede ayudar a romper una espera circular ya existente, la condición que se ataca directamente al permitir que el SO retire recursos es la de 'sin expropiación'."
       },
       {
         "id": "d",
         "texto": "La condición de retención y espera, ya que el proceso debe liberar todo antes de pedir más.",
-        "explicacion": "Incorrecto. La retención y espera se elimina obligando a los procesos a solicitar todos sus recursos al inicio o a no retener ninguno antes de pedir nuevos [6, 7]. La expropiación es un método distinto que actúa sobre el control del SO sobre el recurso, no sobre la política de solicitud del proceso [3]."
+        "explicacion": "Incorrecto. La retención y espera se elimina obligando a los procesos a solicitar todos sus recursos al inicio o a no retener ninguno antes de pedir nuevos. La expropiación es un método distinto que actúa sobre el control del SO sobre el recurso, no sobre la política de solicitud del proceso."
       }
     ],
     "respuesta_correcta": "a"
@@ -1284,22 +1284,22 @@
       {
         "id": "a",
         "texto": "Definiendo un orden de tipos de recursos de modo que si un proceso tiene tipo A, solo pueda pedir tipo B en adelante, evitando la espera circular.",
-        "explicacion": "Correcto. Según las fuentes, la espera circular se puede impedir definiendo un orden lineal o jerárquico entre los recursos. Si un proceso ya posee un recurso de cierto nivel, solo se le permite solicitar recursos de niveles superiores, lo que imposibilita la formación de un ciclo o lista cerrada de procesos en espera [1, 2]."
+        "explicacion": "Correcto. Según las fuentes, la espera circular se puede impedir definiendo un orden lineal o jerárquico entre los recursos. Si un proceso ya posee un recurso de cierto nivel, solo se le permite solicitar recursos de niveles superiores, lo que imposibilita la formación de un ciclo o lista cerrada de procesos en espera."
       },
       {
         "id": "b",
         "texto": "Asignando automáticamente todos los recursos al proceso con mayor prioridad en el sistema.",
-        "explicacion": "Incorrecto. La prioridad puede influir en la planificación o en evitar la inanición (starvation), pero no es un mecanismo diseñado para romper la estructura lógica de la espera circular requerida para un interbloqueo [1, 2]."
+        "explicacion": "Incorrecto. La prioridad puede influir en la planificación o en evitar la inanición (starvation), pero no es un mecanismo diseñado para romper la estructura lógica de la espera circular requerida para un interbloqueo."
       },
       {
         "id": "c",
         "texto": "Forzando a los procesos a liberar todos sus recursos cada vez que soliciten uno adicional.",
-        "explicacion": "Incorrecto. Esta acción se relaciona más con la eliminación de la condición de 'retención y espera' o la aplicación de 'expropiación', pero no describe el funcionamiento de la estrategia basada en una jerarquía u orden de recursos [2-4]."
+        "explicacion": "Incorrecto. Esta acción se relaciona más con la eliminación de la condición de 'retención y espera' o la aplicación de 'expropiación', pero no describe el funcionamiento de la estrategia basada en una jerarquía u orden de recursos."
       },
       {
         "id": "d",
         "texto": "Permitiendo que los procesos soliciten recursos en cualquier orden pero limitando la cantidad total.",
-        "explicacion": "Incorrecto. El interbloqueo puede ocurrir incluso con pocos recursos si se permite que las peticiones se realicen en cualquier orden, favoreciendo la aparición de esperas circulares. La estrategia jerárquica impone precisamente un orden específico para evitar este riesgo [1, 2]."
+        "explicacion": "Incorrecto. El interbloqueo puede ocurrir incluso con pocos recursos si se permite que las peticiones se realicen en cualquier orden, favoreciendo la aparición de esperas circulares. La estrategia jerárquica impone precisamente un orden específico para evitar este riesgo."
       }
     ],
     "respuesta_correcta": "a"
@@ -1313,22 +1313,22 @@
       {
         "id": "a",
         "texto": "Únicamente el historial de ejecuciones anteriores de cada proceso en el sistema.",
-        "explicacion": "Incorrecto. Las estrategias para evitar o predecir el interbloqueo se basan en la planificación de eventos venideros; el historial pasado no es suficiente para determinar si una asignación actual conducirá a un estado no seguro en el futuro [1]."
+        "explicacion": "Incorrecto. Las estrategias para evitar o predecir el interbloqueo se basan en la planificación de eventos venideros; el historial pasado no es suficiente para determinar si una asignación actual conducirá a un estado no seguro en el futuro."
       },
       {
         "id": "b",
         "texto": "La cantidad total de procesos activos y el número de recursos físicos del sistema.",
-        "explicacion": "Incorrecto. Aunque el sistema conoce los recursos totales (vector R), la predicción requiere específicamente saber cómo planean los procesos utilizar esos recursos a lo largo de su ejecución para evitar conflictos [2, 3]."
+        "explicacion": "Incorrecto. Aunque el sistema conoce los recursos totales (vector R), la predicción requiere específicamente saber cómo planean los procesos utilizar esos recursos a lo largo de su ejecución para evitar conflictos."
       },
       {
         "id": "c",
         "texto": "El conocimiento anticipado de las futuras solicitudes de recursos de cada proceso.",
-        "explicacion": "Correcto. Por definición, las estrategias de predicción y evitación (como el algoritmo del banquero) deciden dinámicamente si una petición es segura basándose en el conocimiento de todas las solicitudes que el proceso realizará hasta finalizar [1, 4]."
+        "explicacion": "Correcto. Por definición, las estrategias de predicción y evitación (como el algoritmo del banquero) deciden dinámicamente si una petición es segura basándose en el conocimiento de todas las solicitudes que el proceso realizará hasta finalizar."
       },
       {
         "id": "d",
         "texto": "Solo el estado actual de los recursos disponibles en el sistema en cada momento.",
-        "explicacion": "Incorrecto. Conocer solo el estado actual es propio de los algoritmos de detección, los cuales son más permisivos. La predicción es más restrictiva y requiere proyecciones a futuro para garantizar que siempre exista una secuencia de finalización segura [5-7]."
+        "explicacion": "Incorrecto. Conocer solo el estado actual es propio de los algoritmos de detección, los cuales son más permisivos. La predicción es más restrictiva y requiere proyecciones a futuro para garantizar que siempre exista una secuencia de finalización segura."
       }
     ],
     "respuesta_correcta": "c"
@@ -1342,22 +1342,22 @@
       {
         "id": "a",
         "texto": "Solo cuando el sistema detecta que la memoria disponible cae por debajo de un umbral crítico.",
-        "explicacion": "Incorrecto. El algoritmo de detección se enfoca en identificar esperas circulares lógicas entre procesos. Basar la frecuencia únicamente en el nivel de memoria RAM no garantiza la detección oportuna de interbloqueos causados por otros tipos de recursos o conflictos de comunicación [1, 2]."
+        "explicacion": "Incorrecto. El algoritmo de detección se enfoca en identificar esperas circulares lógicas entre procesos. Basar la frecuencia únicamente en el nivel de memoria RAM no garantiza la detección oportuna de interbloqueos causados por otros tipos de recursos o conflictos de comunicación."
       },
       {
         "id": "b",
         "texto": "Cada vez que un proceso realiza una petición de recurso, permitiendo una detección temprana aunque con mayor costo de procesador.",
-        "explicacion": "Correcto. Según las fuentes, realizar la comprobación en cada solicitud conlleva a una detección temprana del interbloqueo, permitiendo una recuperación más rápida, aunque tiene la desventaja de consumir un tiempo de procesador considerable [1, 2]."
+        "explicacion": "Correcto. Según las fuentes, realizar la comprobación en cada solicitud conlleva a una detección temprana del interbloqueo, permitiendo una recuperación más rápida, aunque tiene la desventaja de consumir un tiempo de procesador considerable."
       },
       {
         "id": "c",
         "texto": "Únicamente al inicio y al final de cada sesión de trabajo del sistema operativo.",
-        "explicacion": "Incorrecto. Los interbloqueos son fenómenos dinámicos que ocurren durante la ejecución de los procesos. Una frecuencia tan baja impediría que el sistema operativo gestionara y recuperara recursos bloqueados de forma efectiva mientras los procesos están activos [1, 2]."
+        "explicacion": "Incorrecto. Los interbloqueos son fenómenos dinámicos que ocurren durante la ejecución de los procesos. Una frecuencia tan baja impediría que el sistema operativo gestionara y recuperara recursos bloqueados de forma efectiva mientras los procesos están activos."
       },
       {
         "id": "d",
         "texto": "Solo cuando el administrador del sistema lo solicita manualmente mediante una llamada al sistema.",
-        "explicacion": "Incorrecto. El mecanismo de detección debe ser una función integrada y automática del sistema operativo para garantizar la estabilidad operativa. Depender de una intervención manual sería ineficiente para un sistema de tiempo real o multiprogramado [1, 2]."
+        "explicacion": "Incorrecto. El mecanismo de detección debe ser una función integrada y automática del sistema operativo para garantizar la estabilidad operativa. Depender de una intervención manual sería ineficiente para un sistema de tiempo real o multiprogramado."
       }
     ],
     "respuesta_correcta": "b"
@@ -1371,22 +1371,22 @@
       {
         "id": "a",
         "texto": "Aborta el proceso inmediatamente para liberar los recursos que tiene asignados al sistema.",
-        "explicacion": "Incorrecto. Abortar o finalizar procesos es una de las estrategias de recuperación que se aplican una vez que el interbloqueo ya ha sido detectado, pero no es la lógica interna del algoritmo de detección propiamente dicho [1, 2]."
+        "explicacion": "Incorrecto. Abortar o finalizar procesos es una de las estrategias de recuperación que se aplican una vez que el interbloqueo ya ha sido detectado, pero no es la lógica interna del algoritmo de detección propiamente dicho."
       },
       {
         "id": "b",
         "texto": "Bloquea el proceso y lo coloca en la cola de espera hasta que haya más recursos disponibles.",
-        "explicacion": "Incorrecto. Si las solicitudes son menores o iguales a los recursos disponibles, el algoritmo asume que el proceso puede ejecutarse hasta finalizar; el bloqueo ocurre precisamente cuando las solicitudes no pueden ser satisfechas [3]."
+        "explicacion": "Incorrecto. Si las solicitudes son menores o iguales a los recursos disponibles, el algoritmo asume que el proceso puede ejecutarse hasta finalizar; el bloqueo ocurre precisamente cuando las solicitudes no pueden ser satisfechas."
       },
       {
         "id": "c",
         "texto": "Reinicia el proceso desde el principio y vuelve a asignarle los recursos que necesitaba.",
-        "explicacion": "Incorrecto. El retroceso (rollback) a un punto de control previo es una técnica de recuperación ante un interbloqueo detectado, no una acción del proceso de búsqueda de esperas circulares [1]."
+        "explicacion": "Incorrecto. El retroceso (rollback) a un punto de control previo es una técnica de recuperación ante un interbloqueo detectado, no una acción del proceso de búsqueda de esperas circulares."
       },
       {
         "id": "d",
         "texto": "Lo marca como completable, suma sus recursos asignados al vector disponible y continúa buscando otros procesos.",
-        "explicacion": "Correcto. El algoritmo busca procesos cuyas peticiones puedan satisfacerse con los recursos actuales (vector D). Al encontrar uno, se asume que termina su ejecución y libera sus recursos asignados, sumándolos al vector de trabajo (T) para ver si otros procesos pueden entonces desbloquearse [3-5]."
+        "explicacion": "Correcto. El algoritmo busca procesos cuyas peticiones puedan satisfacerse con los recursos actuales (vector D). Al encontrar uno, se asume que termina su ejecución y libera sus recursos asignados, sumándolos al vector de trabajo (T) para ver si otros procesos pueden entonces desbloquearse."
       }
     ],
     "respuesta_correcta": "d"
@@ -1400,22 +1400,22 @@
       {
         "id": "a",
         "texto": "Que esos procesos están en estado suspendido y deben ser reanudados por el planificador.",
-        "explicacion": "Incorrecto. El estado suspendido se refiere a procesos que han sido movidos a almacenamiento secundario (swapping) para liberar memoria principal, mientras que el algoritmo de detección se centra en identificar bloqueos lógicos por recursos entre procesos activos [1, 2]."
+        "explicacion": "Incorrecto. El estado suspendido se refiere a procesos que han sido movidos a almacenamiento secundario (swapping) para liberar memoria principal, mientras que el algoritmo de detección se centra en identificar bloqueos lógicos por recursos entre procesos activos."
       },
       {
         "id": "b",
         "texto": "Que esos procesos requieren más recursos de los disponibles pero podrán ejecutarse más tarde.",
-        "explicacion": "Incorrecto. El algoritmo asume que, si un proceso no puede ser marcado, es porque no existe ninguna secuencia de finalización posible con los recursos actuales y los que liberarían otros procesos; por lo tanto, no es una espera temporal sino un bloqueo permanente [2, 3]."
+        "explicacion": "Incorrecto. El algoritmo asume que, si un proceso no puede ser marcado, es porque no existe ninguna secuencia de finalización posible con los recursos actuales y los que liberarían otros procesos; por lo tanto, no es una espera temporal sino un bloqueo permanente."
       },
       {
         "id": "c",
         "texto": "Que esos procesos se encuentran en situación de interbloqueo y no pueden completar su ejecución.",
-        "explicacion": "Correcto. Según las fuentes, la lógica del algoritmo consiste en marcar procesos cuyas peticiones puedan satisfacerse; si al finalizar el procedimiento quedan procesos sin marcar, se concluye que dichos procesos se encuentran en interbloqueo [2, 4]."
+        "explicacion": "Correcto. Según las fuentes, la lógica del algoritmo consiste en marcar procesos cuyas peticiones puedan satisfacerse; si al finalizar el procedimiento quedan procesos sin marcar, se concluye que dichos procesos se encuentran en interbloqueo."
       },
       {
         "id": "d",
         "texto": "Que esos procesos tienen errores de programación y deben ser eliminados del sistema.",
-        "explicacion": "Incorrecto. Si bien el interbloqueo suele ser consecuencia de deficiencias en el diseño de las aplicaciones, el objetivo y conclusión técnica del algoritmo es identificar el estado de interbloqueo, no calificar el código fuente ni ordenar su eliminación automática [4, 5]."
+        "explicacion": "Incorrecto. Si bien el interbloqueo suele ser consecuencia de deficiencias en el diseño de las aplicaciones, el objetivo y conclusión técnica del algoritmo es identificar el estado de interbloqueo, no calificar el código fuente ni ordenar su eliminación automática."
       }
     ],
     "respuesta_correcta": "c"
@@ -1429,22 +1429,22 @@
       {
         "id": "a",
         "texto": "Siempre se elige el proceso que tiene mayor prioridad asignada por el sistema operativo.",
-        "explicacion": "Incorrecto. Aunque la prioridad puede ser un factor a considerar (menor prioridad), el criterio fundamental en la recuperación selectiva es minimizar el costo global para el sistema [1], [2], [3]."
+        "explicacion": "Incorrecto. Aunque la prioridad puede ser un factor a considerar (menor prioridad), el criterio fundamental en la recuperación selectiva es minimizar el costo global para el sistema."
       },
       {
         "id": "b",
         "texto": "Se selecciona el proceso que lleva más tiempo esperando en la cola de listos del sistema.",
-        "explicacion": "Incorrecto. El tiempo en la cola de listos es un parámetro de planificación para evitar la inanición, pero no es el criterio técnico utilizado para decidir qué proceso sacrificar en una situación de interbloqueo [4], [3]."
+        "explicacion": "Incorrecto. El tiempo en la cola de listos es un parámetro de planificación para evitar la inanición, pero no es el criterio técnico utilizado para decidir qué proceso sacrificar en una situación de interbloqueo."
       },
       {
         "id": "c",
         "texto": "Se selecciona el proceso cuya terminación represente el menor costo para el sistema, como menor tiempo consumido o menor cantidad de recursos asignados.",
-        "explicacion": "Correcto. Las fuentes indican que al aplicar estrategias de recuperación por finalización sucesiva de procesos, se deben definir políticas de selección que impliquen un costo mínimo, como la menor cantidad de tiempo de procesador consumida o la menor cantidad de recursos asignados [1], [2], [3]."
+        "explicacion": "Correcto. Las fuentes indican que al aplicar estrategias de recuperación por finalización sucesiva de procesos, se deben definir políticas de selección que impliquen un costo mínimo, como la menor cantidad de tiempo de procesador consumida o la menor cantidad de recursos asignados."
       },
       {
         "id": "d",
         "texto": "Se elige aleatoriamente uno de los procesos involucrados en el interbloqueo para abortarlo.",
-        "explicacion": "Incorrecto. La recuperación del interbloqueo no es un proceso aleatorio; el sistema operativo busca restaurar el estado seguro afectando lo menos posible la productividad y el trabajo ya realizado por los procesos [1], [3]."
+        "explicacion": "Incorrecto. La recuperación del interbloqueo no es un proceso aleatorio; el sistema operativo busca restaurar el estado seguro afectando lo menos posible la productividad y el trabajo ya realizado por los procesos."
       }
     ],
     "respuesta_correcta": "c"

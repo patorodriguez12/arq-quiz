@@ -126,9 +126,9 @@ export default function ConfigScreen({ totalPreguntas, onStart }: Props) {
 
         {/* Firma Desarrollador */}
         <div className="mt-16">
-          <p className="font-mono text-xs pb-4">
-            Desarrollado por{" "}
-            <a href="https://github.com/patorodriguez12" target="_blank">
+          <p className="font-mono text-xs pb-4 text-[#7d7062]">
+            desarrollado con ❤️ por{" "}
+            <a className="text-[#494239]" href="https://github.com/patorodriguez12" target="_blank">
               Hugo Patricio Rodriguez
             </a>
           </p>
